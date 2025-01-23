@@ -3,7 +3,7 @@ import Box from '@/components/Box'
 import PageTitle from '@/components/PageTitle'
 
 const CoinsTracker = () => {
-  const { data } = useCoinsTracker()
+  const {} = useCoinsTracker()
 
   return (
     <Box>

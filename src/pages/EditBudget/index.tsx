@@ -65,7 +65,7 @@ const EditBudget = () => {
                   />
                   <Controller
                     control={control}
-                    name="budgetCurrency"
+                    name="currency"
                     render={({ field }) => (
                       <Select
                         options={currenciesOptions}

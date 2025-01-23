@@ -1,11 +1,12 @@
 import Button from '@/components/Button'
 import { BUTTON_VARIANTS } from '@/components/Button/constants'
 import { BUDGET_SECTIONS } from '@/pages/AddBudget/constants'
+import { BudgetNavigationProps } from './types'
 
 const BudgetNavigation = ({
   selectedBudgetSection,
   setSelectedBudgetSection,
-}) => {
+}: BudgetNavigationProps) => {
   return (
     <div className="flex items-center gap-4 mb-4">
       <Button

@@ -2,8 +2,12 @@ import { useCallback, useState } from 'react'
 import { useFieldArray } from 'react-hook-form'
 
 import { BUDGET_SECTIONS, defaultBudgetItem } from '@/pages/AddBudget/constants'
+import { UseBudgetFormProps } from './types'
 
-export const useBudgetForm = ({ control, selectedBudgetSection }) => {
+export const useBudgetForm = ({
+  control,
+  selectedBudgetSection,
+}: UseBudgetFormProps) => {
   const [editableItem, setEditableItem] = useState('')
 
   const { append: essentialNeedsAppend, remove: essentialNeedsRemove } =
@@ -37,7 +41,7 @@ export const useBudgetForm = ({ control, selectedBudgetSection }) => {
   }, [selectedBudgetSection])
 
   const removeData = useCallback(
-    (index) => {
+    (index: number) => {
       if (selectedBudgetSection === BUDGET_SECTIONS.essentialNeeds) {
         essentialNeedsRemove(index)
       }

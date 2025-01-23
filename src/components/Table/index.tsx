@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Table = () => {
   return (
     <div className="overflow-hidden rounded-[30px] border border-[#e9eaf3] bg-white shadow-[0_2px_10px_0_#195dc212]">

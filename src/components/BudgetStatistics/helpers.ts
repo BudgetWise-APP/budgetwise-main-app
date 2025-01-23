@@ -1,6 +1,8 @@
+import { BudgetItemType } from '@/api/types'
 import { BUDGET_TYPES } from '@/pages/AddBudget/constants'
+import { BudgetItemsCapacityType } from './types'
 
-function calculateIncome(income, multiplier) {
+function calculateIncome(income: number, multiplier: number): number {
   if (!String(income).length || income === 0) {
     return 0
   }
@@ -8,7 +10,7 @@ function calculateIncome(income, multiplier) {
   return Math.round(income * multiplier)
 }
 
-export function getBasicDistribution(income: number) {
+function getBasicDistribution(income: number): BudgetItemsCapacityType {
   return {
     needs: calculateIncome(income, 0.5),
     wants: calculateIncome(income, 0.3),
@@ -16,7 +18,7 @@ export function getBasicDistribution(income: number) {
   }
 }
 
-export function getSavingsAndGiving(income: number) {
+function getSavingsAndGiving(income: number): BudgetItemsCapacityType {
   return {
     needs: calculateIncome(income, 0.7),
     wants: calculateIncome(income, 0.2),
@@ -24,7 +26,7 @@ export function getSavingsAndGiving(income: number) {
   }
 }
 
-export function getMinimalSavings(income: number) {
+function getMinimalSavings(income: number): BudgetItemsCapacityType {
   return {
     needs: calculateIncome(income, 0.8),
     wants: 0,
@@ -32,7 +34,7 @@ export function getMinimalSavings(income: number) {
   }
 }
 
-export function getUniversalBalance(income: number) {
+function getUniversalBalance(income: number): BudgetItemsCapacityType {
   return {
     needs: calculateIncome(income, 0.6),
     wants: calculateIncome(income, 0.3),
@@ -40,7 +42,7 @@ export function getUniversalBalance(income: number) {
   }
 }
 
-export function getZeroBased() {
+function getZeroBased(): BudgetItemsCapacityType {
   return {
     needs: 0,
     wants: 0,
@@ -48,7 +50,10 @@ export function getZeroBased() {
   }
 }
 
-export function getBudgetPrediction(budgetType, income) {
+export function getBudgetPrediction(
+  budgetType: string,
+  income: number,
+): BudgetItemsCapacityType {
   if (budgetType === BUDGET_TYPES.basicDistribution) {
     return getBasicDistribution(income)
   }
@@ -66,7 +71,7 @@ export function getBudgetPrediction(budgetType, income) {
   return getZeroBased()
 }
 
-export function calculateExpenses(items) {
+export function calculateExpenses(items: BudgetItemType[]): number {
   return Math.round(
     items.reduce((acc, item) => {
       return Number(acc) + Number(item.amount)

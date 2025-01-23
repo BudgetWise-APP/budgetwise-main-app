@@ -1,8 +1,9 @@
 import axios from 'axios'
 
 import { MICROSERVICES } from './constants'
+import { CryptoCoinType, IntegrationType } from './types'
 
-export async function getBinanceAccount() {
+export async function getBinanceAccount(): Promise<number | undefined> {
   try {
     const { data } = await axios.get(
       `${MICROSERVICES.cryptoApi}/binance/account`,
@@ -14,7 +15,7 @@ export async function getBinanceAccount() {
   }
 }
 
-export async function getByBitAccount() {
+export async function getByBitAccount(): Promise<number | undefined> {
   try {
     const { data } = await axios.get(`${MICROSERVICES.cryptoApi}/bybit/account`)
 
@@ -24,7 +25,7 @@ export async function getByBitAccount() {
   }
 }
 
-export async function getCoinmarketcapCoins() {
+export async function getCoinmarketcapCoins(): Promise<CryptoCoinType[]> {
   const { data } = await axios.get(
     `${MICROSERVICES.cryptoApi}/crypto-api/coinmarketcap?symbol=BTC,ETH,XRP`,
   )
@@ -32,14 +33,14 @@ export async function getCoinmarketcapCoins() {
   return data
 }
 
-export async function addFavoriteCoin(data) {
+export async function addFavoriteCoin(data: CryptoCoinType): Promise<any> {
   await axios.post(
     `${MICROSERVICES.cryptoApi}/crypto-api/cryptocurrencies`,
     data,
   )
 }
 
-export async function getIntegrations() {
+export async function getIntegrations(): Promise<IntegrationType[]> {
   const { data } = await axios.get(`${MICROSERVICES.cryptoApi}/integrations`)
 
   return data.integrations

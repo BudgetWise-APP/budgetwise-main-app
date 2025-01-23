@@ -1,8 +1,13 @@
 import { useMemo } from 'react'
 
 import { calculateExpenses, getBudgetPrediction } from './helpers'
+import { UseBudgetStatisticsProps, UseBudgetStatisticsType } from './types'
 
-export const useBudgetStatistics = ({ budgetType, income, items }) => {
+export const useBudgetStatistics = ({
+  budgetType,
+  income,
+  items,
+}: UseBudgetStatisticsProps): UseBudgetStatisticsType => {
   const budgetPredictions = useMemo(() => {
     return getBudgetPrediction(budgetType, +income)
   }, [budgetType, income])

@@ -1,4 +1,11 @@
-const BudgetStatus = ({ balance, expenses, currency }) => {
+import { ReactNode } from 'react'
+import { BudgetStatusType } from './types'
+
+const BudgetStatus = ({
+  balance,
+  expenses,
+  currency,
+}: BudgetStatusType): ReactNode => {
   const percentageUsed = (expenses / balance) * 100
 
   function getStatusColor() {

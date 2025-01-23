@@ -1,7 +1,8 @@
+import { Children } from '@/types'
 import Container from '../Container'
 import { Header } from '../Header'
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children }: Children) => {
   return (
     <div className="flex align-top">
       <div className="w-[250px] max-w-[250px] p-0"></div>

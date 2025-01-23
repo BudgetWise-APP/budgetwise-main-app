@@ -1,4 +1,3 @@
-// eslint.config.js
 import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
 import reactRefreshPlugin from 'eslint-plugin-react-refresh'
@@ -7,7 +6,6 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import globals from 'globals'
 
 export default [
-  // Global ignores
   {
     ignores: [
       'dist/**',
@@ -19,7 +17,6 @@ export default [
     ],
   },
 
-  // Основная конфигурация
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     languageOptions: {
@@ -43,21 +40,14 @@ export default [
     },
 
     rules: {
-      // TypeScript правила
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/ban-types': 'off',
-
-      // Общие правила
       'no-console': 'warn',
       'prefer-template': 'error',
-
-      // React Refresh
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-
-      // Форматирование
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
@@ -65,8 +55,6 @@ export default [
         { blankLine: 'any', prev: 'import', next: 'import' },
       ],
       'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
-
-      // Импорты
       'import/order': [
         'error',
         {

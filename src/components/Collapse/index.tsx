@@ -1,6 +1,10 @@
+import { Children, Title } from '@/types'
 import { useState } from 'react'
 
-const Collapse = ({ children, title }) => {
+const Collapse = ({
+  children,
+  title,
+}: Children & Title<string | React.ReactNode>) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

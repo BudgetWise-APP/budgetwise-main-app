@@ -4,9 +4,13 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { BUDGET_SECTIONS, defaultBudgetFormData } from '../AddBudget/constants'
-import { AddBudgetSchemaType, AddBudgetSchema } from '../AddBudget/helpers'
-import { addBudget, editBudget, getBudgetById } from '@/api'
+import {
+  BUDGET_SECTIONS,
+  CURRENCIES,
+  defaultBudgetFormData,
+} from '../AddBudget/constants'
+import { AddBudgetSchema, BudgetSchemaType } from '../AddBudget/helpers'
+import { editBudget, getBudgetById } from '@/api'
 
 export const useEditBudget = () => {
   const navigate = useNavigate()
@@ -15,7 +19,7 @@ export const useEditBudget = () => {
     useState<BUDGET_SECTIONS>(BUDGET_SECTIONS.essentialNeeds)
 
   const { control, watch, handleSubmit, setValue, reset } =
-    useForm<AddBudgetSchemaType>({
+    useForm<BudgetSchemaType>({
       resolver: zodResolver(AddBudgetSchema),
       defaultValues: defaultBudgetFormData,
       mode: 'all',
@@ -26,7 +30,7 @@ export const useEditBudget = () => {
     queryFn: getBudgetById,
   })
 
-  const currency = watch('currency')
+  const currency = watch('currency') as `${CURRENCIES}`
   const watchItems = watch('items')
   const budgetTitle = watch('title')
 
@@ -37,8 +41,8 @@ export const useEditBudget = () => {
     },
   })
 
-  function onSubmit(data) {
-    mutate({ id: budgetId, budgetData: data })
+  function onSubmit(data: BudgetSchemaType) {
+    mutate({ id: budgetId!, budgetData: data })
   }
 
   useEffect(() => {

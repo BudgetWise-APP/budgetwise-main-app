@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const BudgetItemSchema = z.object({
+const BudgetItemSchema = z.object({
   icon: z.string().optional(),
   title: z.string().min(1, { message: 'Title is requred!' }),
   amount: z.string(),
@@ -19,4 +19,4 @@ export const AddBudgetSchema = z.object({
   }),
 })
 
-export type AddBudgetSchemaType = z.infer<typeof AddBudgetSchema>
+export type BudgetSchemaType = z.infer<typeof AddBudgetSchema>

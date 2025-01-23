@@ -47,7 +47,7 @@ export const currenciesOptions = [
   { label: CURRENCIES.uah, value: CURRENCIES.uah },
 ]
 
-export const defaultEssentialNeeds = [
+const defaultEssentialNeeds = [
   {
     icon: 'fa-solid fa-home',
     title: 'Rent/Mortgage',
@@ -164,7 +164,7 @@ export const defaultEssentialNeeds = [
   },
 ]
 
-export const defaultPersonalWants = [
+const defaultPersonalWants = [
   {
     icon: 'fa-solid fa-utensils',
     title: 'Eating out',
@@ -233,7 +233,7 @@ export const defaultPersonalWants = [
   },
 ]
 
-export const defaultSavings = [
+const defaultSavings = [
   {
     icon: 'fa-solid fa-piggy-bank',
     title: 'Savings',
@@ -254,7 +254,7 @@ export const defaultSavings = [
   },
 ]
 
-export const defaultBudget = {
+const defaultBudget = {
   essentialNeeds: defaultEssentialNeeds,
   personalWants: defaultPersonalWants,
   savings: defaultSavings,

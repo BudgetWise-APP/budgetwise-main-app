@@ -1,4 +1,6 @@
-const TableRow = ({ children, className, ...rest }) => {
+import { TableRowProps } from './types'
+
+const TableRow = ({ children, className, ...rest }: TableRowProps) => {
   return (
     <div
       className={`relative grid gap-3 grid-rows-[auto] grid-cols-12 items-center py-4 px-[36px] ${className}`}

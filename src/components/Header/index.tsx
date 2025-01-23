@@ -1,10 +1,11 @@
 import { jwtDecode } from 'jwt-decode'
 
 import Button from '../Button'
+import { UserType } from './types'
 
 export const Header = () => {
   const token = localStorage.getItem('auth_token')
-  const user = token ? jwtDecode(token) : null
+  const user: UserType | null = token ? jwtDecode(token) : null
 
   return (
     <div className="bg-white shadow-[0_2px_12px_0_rgba(11,22,44,0.05)]">

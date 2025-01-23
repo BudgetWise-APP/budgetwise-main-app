@@ -3,7 +3,7 @@ import Box from '@/components/Box'
 import Spinner from '@/components/Spinner'
 
 export const Crypto = () => {
-  const { integraions, isLoading } = useCrypto()
+  const { byBitAccount, binanceAccount, isLoading } = useCrypto()
 
   return (
     <Box className="max-w-[724px] py-6 px-12 flex-col">
@@ -30,7 +30,7 @@ export const Crypto = () => {
                   className="transition text-sm rounded-[52px] border border-[#e9eaf3] bg-[#f7f9fc] h-[38px] px-4 outline-none focus:border-blue-500 mb-2"
                   readOnly
                   placeholder="**********"
-                  value={integraions[0]?.api_key}
+                  value={binanceAccount?.api_key}
                 />
               </div>
               <div className="flex items-center">
@@ -38,7 +38,7 @@ export const Crypto = () => {
                 <input
                   className="transition text-sm rounded-[52px] border border-[#e9eaf3] bg-[#f7f9fc] h-[38px] px-4 outline-none focus:border-blue-500 mb-2"
                   readOnly
-                  value={integraions[0]?.secret_key}
+                  value={binanceAccount?.secret_key}
                 />
               </div>
             </div>
@@ -52,7 +52,7 @@ export const Crypto = () => {
                   className="transition text-sm rounded-[52px] border border-[#e9eaf3] bg-[#f7f9fc] h-[38px] px-4 outline-none focus:border-blue-500 mb-2"
                   readOnly
                   placeholder="**********"
-                  value={integraions[1]?.api_key}
+                  value={byBitAccount?.api_key}
                 />
               </div>
               <div className="flex items-center">
@@ -60,7 +60,7 @@ export const Crypto = () => {
                 <input
                   className="transition text-sm rounded-[52px] border border-[#e9eaf3] bg-[#f7f9fc] h-[38px] px-4 outline-none focus:border-blue-500 mb-2"
                   readOnly
-                  value={integraions[1]?.secret_key}
+                  value={byBitAccount?.secret_key}
                 />
               </div>
             </div>

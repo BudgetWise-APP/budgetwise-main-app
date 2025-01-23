@@ -10,7 +10,7 @@ import Login from '@/pages/Login'
 import Reports from '@/pages/Reports'
 import Settings from '@/pages/Settings'
 
-export interface RouteConfig {
+interface RouteConfig {
   path: string
   element: JSX.Element
   children?: RouteConfig[]

@@ -1,9 +1,9 @@
 import BudgetStatus from './BudgetStatus'
 import { useBudgetStatistics } from './useBudgetStatistics'
-import { currenciesSymbols } from '@/pages/AddBudget/constants'
-import { AddBudgetSchemaType } from '@/pages/AddBudget/helpers'
+import { CURRENCIES, currenciesSymbols } from '@/pages/AddBudget/constants'
+import { BudgetSchemaType } from '@/pages/AddBudget/helpers'
 
-const BudgetStatistics = ({ formData }: { formData: AddBudgetSchemaType }) => {
+const BudgetStatistics = ({ formData }: { formData: BudgetSchemaType }) => {
   const { income, currency, budgetType, items } = formData
   const {
     needsExpenses,
@@ -14,7 +14,7 @@ const BudgetStatistics = ({ formData }: { formData: AddBudgetSchemaType }) => {
     budgetPredictions,
   } = useBudgetStatistics({ budgetType, income, items })
   const { needs, wants, savings } = budgetPredictions
-  const currencySymbol = currenciesSymbols[currency]
+  const currencySymbol = currenciesSymbols[currency as CURRENCIES]
 
   return (
     <div className="my-4 bg-[#f7f9fc] p-4 grid grid-cols-3 gap-4 rounded">

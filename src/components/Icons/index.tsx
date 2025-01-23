@@ -5,8 +5,12 @@ import { brandIcons } from '@/constants/brandIcons'
 import { regularIcons } from '@/constants/regularIcons'
 import { solidIcons } from '@/constants/solidIcons'
 import { generateKey } from '@/utils'
+import { IconsProps } from './types'
 
-const Icons = ({ setIcon, defaultIcon }) => {
+const Icons = ({
+  setIcon,
+  defaultIcon = 'fa-solid fa-bullseye',
+}: IconsProps) => {
   const [selectedIcon, setSelectedIcon] = useState(defaultIcon)
   const [iconType, setIconType] = useState(ICON_TYPES.solid)
   const [showIcons, setShowIcons] = useState(false)
@@ -17,7 +21,7 @@ const Icons = ({ setIcon, defaultIcon }) => {
     [ICON_TYPES.brand]: brandIcons,
   }
 
-  function handleIconClick(icon) {
+  function handleIconClick(icon: string) {
     setIcon(icon)
     setSelectedIcon(icon)
     setShowIcons(false)

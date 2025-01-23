@@ -1,6 +1,7 @@
 import Box from '../Box'
+import { PageNavigationProps } from './types'
 
-const PageNavigation = ({ items, page, setPage }) => {
+const PageNavigation = ({ items, page, setPage }: PageNavigationProps) => {
   return (
     <Box className="max-w-[275px] sticky top-[24px] flex flex-col h-max">
       {items?.map((item, index) => {

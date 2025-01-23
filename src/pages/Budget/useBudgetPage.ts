@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { BUDGET_SECTIONS } from '../AddBudget/constants'
 import { deleteBudget, getBudgets } from '@/api'
+import { BudgetType } from '@/api/types'
 
 export const useBudgetPage = () => {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ export const useBudgetPage = () => {
   )
   const queryClient = useQueryClient()
 
-  const { data: budgets, isLoading } = useQuery({
+  const { data: budgets, isLoading } = useQuery<BudgetType[]>({
     queryKey: ['getBudgets'],
     queryFn: getBudgets,
   })
@@ -20,7 +21,7 @@ export const useBudgetPage = () => {
   const { mutate: deleteBudgetMutate } = useMutation({
     mutationFn: deleteBudget,
     onSuccess: () => {
-      queryClient.invalidateQueries(['getBudgets'])
+      queryClient.invalidateQueries({ queryKey: ['getBudgets'] })
     },
   })
 

@@ -57,9 +57,9 @@ const BudgetPage = () => {
           />
           <BudgetTableHeader />
           {items[selectedBudgetSection].map(
-            ({ icon, title, amount, description, _id }, index) => {
+            ({ icon, title, amount, description }, index) => {
               return (
-                <TableRow key={_id} style={{ zIndex: 1000 - index }}>
+                <TableRow key={index} style={{ zIndex: 1000 - index }}>
                   <div className="flex items-center font-semibold uppercase text-xs z-50 col-span-1">
                     <i className={`${icon} text-lg text-blue-500 p-1`} />
                   </div>

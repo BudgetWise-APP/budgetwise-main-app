@@ -6,6 +6,7 @@ import { useBudgetForm } from './useBudgetForm'
 import { BUTTON_VARIANTS } from '../Button/constants'
 import Icons from '../Icons'
 import TableRow from '../Table/TableRow'
+import { BudgetFormProps } from './types'
 
 const BudgetForm = ({
   selectedBudgetSection,
@@ -13,7 +14,7 @@ const BudgetForm = ({
   control,
   setValue,
   watchItems,
-}) => {
+}: BudgetFormProps) => {
   const { appendData, removeData } = useBudgetForm({
     control,
     selectedBudgetSection,
@@ -23,12 +24,12 @@ const BudgetForm = ({
     <>
       <BudgetTableHeader />
       {watchItems[selectedBudgetSection].map(
-        ({ icon, title, amount, description, _id }, index) => {
+        ({ icon, title, amount, description }, index) => {
           return (
-            <TableRow key={_id || index} style={{ zIndex: 1000 - index }}>
+            <TableRow key={index} style={{ zIndex: 1000 - index }}>
               <div className="flex items-center font-semibold uppercase text-xs z-50 col-span-1">
                 <Icons
-                  defaultIcon={icon}
+                  defaultIcon={icon || ''}
                   setIcon={(selectedIcon) =>
                     setValue(
                       `items.${selectedBudgetSection}.${index}.icon`,
