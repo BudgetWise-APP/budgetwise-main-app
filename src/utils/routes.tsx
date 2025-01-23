@@ -1,14 +1,14 @@
 import ProtectedRoute from '@/components/ProtectedRoute'
-import { Budget } from '@/pages/Budget'
 import AddBudget from '@/pages/AddBudget'
+import { Budget } from '@/pages/Budget'
+import CoinsTracker from '@/pages/CoinsTracker'
 import Dashboard from '@/pages/Dashboard'
+import EditBudget from '@/pages/EditBudget'
 import Error404 from '@/pages/Error404'
 import GoalTracker from '@/pages/GoalTracker'
 import Login from '@/pages/Login'
 import Reports from '@/pages/Reports'
 import Settings from '@/pages/Settings'
-import EditBudget from '@/pages/EditBudget'
-import CoinsTracker from '@/pages/CoinsTracker'
 
 export interface RouteConfig {
   path: string

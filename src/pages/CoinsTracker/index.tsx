@@ -1,17 +1,17 @@
-import Box from '@/components/Box';
-import PageTitle from '@/components/PageTitle';
-import { useCoinsTracker } from './useCoinsTracker';
+import { useCoinsTracker } from './useCoinsTracker'
+import Box from '@/components/Box'
+import PageTitle from '@/components/PageTitle'
 
 const CoinsTracker = () => {
-    const {data} = useCoinsTracker()
-    console.log('data', data)
-    return (
-        <Box>
-            <div className="flex flex-col w-full">
-                <PageTitle>Coins Tracker</PageTitle>
-            </div>
-        </Box>
-    );
-};
+  const { data } = useCoinsTracker()
 
-export default CoinsTracker;
+  return (
+    <Box>
+      <div className="flex flex-col w-full">
+        <PageTitle>Coins Tracker</PageTitle>
+      </div>
+    </Box>
+  )
+}
+
+export default CoinsTracker

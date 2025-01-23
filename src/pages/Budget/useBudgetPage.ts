@@ -1,8 +1,9 @@
-import { deleteBudget, getBudgets } from '@/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { BUDGET_SECTIONS } from '../AddBudget/constants'
 import { useNavigate } from 'react-router-dom'
+
+import { BUDGET_SECTIONS } from '../AddBudget/constants'
+import { deleteBudget, getBudgets } from '@/api'
 
 export const useBudgetPage = () => {
   const navigate = useNavigate()
@@ -19,7 +20,6 @@ export const useBudgetPage = () => {
   const { mutate: deleteBudgetMutate } = useMutation({
     mutationFn: deleteBudget,
     onSuccess: () => {
-      console.log('Budget deleted')
       queryClient.invalidateQueries(['getBudgets'])
     },
   })

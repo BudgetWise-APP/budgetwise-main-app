@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
+import BudgetPage from './BudgetPage'
 import Button from '@/components/Button'
 import PageTitle from '@/components/PageTitle'
-import BudgetPage from './BudgetPage'
-import { useNavigate } from 'react-router-dom'
 
 export const Budget = () => {
   const navigate = useNavigate()

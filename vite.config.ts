@@ -5,7 +5,11 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  plugins: [ react({ include: '**/*.{jsx,tsx,js,ts}' }), tsconfigPaths(), viteTsconfigPaths()],
+  plugins: [
+    react({ include: '**/*.{jsx,tsx,js,ts}' }),
+    tsconfigPaths(),
+    viteTsconfigPaths(),
+  ],
   server: {
     port: 8899,
   },
@@ -13,5 +17,5 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  }
+  },
 })

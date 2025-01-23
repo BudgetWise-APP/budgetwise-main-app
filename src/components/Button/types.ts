@@ -1,7 +1,8 @@
-import { ClassName } from "@/types"
-import { VariantProps } from "class-variance-authority"
-import { ButtonHTMLAttributes } from "react"
-import { buttonVariants } from "./constants"
+import { VariantProps } from 'class-variance-authority'
+import { ButtonHTMLAttributes } from 'react'
+
+import { buttonVariants } from './constants'
+import { ClassName } from '@/types'
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ClassName &

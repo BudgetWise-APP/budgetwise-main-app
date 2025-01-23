@@ -1,5 +1,4 @@
 const BudgetStatus = ({ balance, expenses, currency }) => {
-  console.log('balance', balance)
   const percentageUsed = (expenses / balance) * 100
 
   function getStatusColor() {

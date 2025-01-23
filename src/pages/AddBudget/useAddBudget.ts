@@ -1,11 +1,12 @@
-import { useForm } from 'react-hook-form'
-import { AddBudgetSchema, AddBudgetSchemaType } from './helpers'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { BUDGET_SECTIONS, defaultBudgetFormData } from './constants'
-import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { addBudget } from '@/api'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+
+import { BUDGET_SECTIONS, defaultBudgetFormData } from './constants'
+import { AddBudgetSchema, AddBudgetSchemaType } from './helpers'
+import { addBudget } from '@/api'
 
 export const useAddBudget = () => {
   const navigate = useNavigate()
@@ -29,7 +30,6 @@ export const useAddBudget = () => {
   })
 
   function onSubmit(data) {
-    console.log(data)
     mutate(data)
   }
 

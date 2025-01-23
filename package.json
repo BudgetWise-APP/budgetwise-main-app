@@ -9,6 +9,8 @@
     "heroku-postbuild": "vite build",
     "simple-build": "vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --write .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cva": "^0.0.0",
+    "eslint-plugin-import": "^2.31.0",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "prettier": "^3.4.1",

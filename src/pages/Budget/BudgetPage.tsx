@@ -1,11 +1,11 @@
-import Collapse from '@/components/Collapse'
 import { useBudgetPage } from './useBudgetPage'
-import Spinner from '@/components/Spinner'
-import BudgetTableHeader from '@/components/BudgetTableHeader'
-import BudgetStatistics from '@/components/BudgetStatistics'
-import TableRow from '@/components/Table/TableRow'
 import { currenciesSymbols } from '../AddBudget/constants'
 import BudgetNavigation from '@/components/BudgetNavigation'
+import BudgetStatistics from '@/components/BudgetStatistics'
+import BudgetTableHeader from '@/components/BudgetTableHeader'
+import Collapse from '@/components/Collapse'
+import Spinner from '@/components/Spinner'
+import TableRow from '@/components/Table/TableRow'
 
 const BudgetPage = () => {
   const {
@@ -27,6 +27,7 @@ const BudgetPage = () => {
 
   return budgets?.reverse().map((budget) => {
     const { title, _id, budgetType, items, currency } = budget
+
     return (
       <Collapse
         title={

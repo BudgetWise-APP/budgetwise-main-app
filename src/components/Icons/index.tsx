@@ -1,8 +1,9 @@
 import { useState } from 'react'
+
+import { ICON_TYPES } from './constants'
 import { brandIcons } from '@/constants/brandIcons'
 import { regularIcons } from '@/constants/regularIcons'
 import { solidIcons } from '@/constants/solidIcons'
-import { ICON_TYPES } from './constants'
 import { generateKey } from '@/utils'
 
 const Icons = ({ setIcon, defaultIcon }) => {

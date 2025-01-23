@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["vite/client","vitest/globals", "vite-plugin-svgr/client"],
+    "types": ["vite/client", "vitest/globals", "vite-plugin-svgr/client"],
     "module": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,8 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["./src/*"],
-    },
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src"]
 }

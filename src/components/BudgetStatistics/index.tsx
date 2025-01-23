@@ -1,7 +1,7 @@
-import { AddBudgetSchemaType } from '@/pages/AddBudget/helpers'
+import BudgetStatus from './BudgetStatus'
 import { useBudgetStatistics } from './useBudgetStatistics'
 import { currenciesSymbols } from '@/pages/AddBudget/constants'
-import BudgetStatus from './BudgetStatus'
+import { AddBudgetSchemaType } from '@/pages/AddBudget/helpers'
 
 const BudgetStatistics = ({ formData }: { formData: AddBudgetSchemaType }) => {
   const { income, currency, budgetType, items } = formData

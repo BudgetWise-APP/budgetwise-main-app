@@ -1,14 +1,15 @@
-import Box from '@/components/Box'
-import Input from '@/components/Input'
-import PageTitle from '@/components/PageTitle'
+import { Controller } from 'react-hook-form'
+
 import { budgetOptions, currenciesOptions } from './constants'
 import { useAddBudget } from './useAddBudget'
-import Select from '@/components/Select'
-import BudgetStatistics from '@/components/BudgetStatistics'
-import { Controller } from 'react-hook-form'
-import Button from '@/components/Button'
+import Box from '@/components/Box'
 import BudgetForm from '@/components/BudgetForm'
 import BudgetNavigation from '@/components/BudgetNavigation'
+import BudgetStatistics from '@/components/BudgetStatistics'
+import Button from '@/components/Button'
+import Input from '@/components/Input'
+import PageTitle from '@/components/PageTitle'
+import Select from '@/components/Select'
 
 const AddBudget = () => {
   const {

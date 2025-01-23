@@ -10,11 +10,13 @@ export const axiosSetup = () => {
   axios.interceptors.request.use(
     (config) => {
       config.headers.Authorization = bearerToken
+
       return config
     },
 
     (error) => {
       console.log('axios request error: ', error)
+
       return Promise.reject(error)
     },
   )

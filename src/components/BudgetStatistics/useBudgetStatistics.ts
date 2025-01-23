@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+
 import { calculateExpenses, getBudgetPrediction } from './helpers'
 
 export const useBudgetStatistics = ({ budgetType, income, items }) => {
