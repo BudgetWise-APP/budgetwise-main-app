@@ -1,8 +1,7 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
 export const axiosSetup = () => {
-  const token = Cookies.get('auth_token')
+  const token = localStorage.getItem('auth_token')
   const bearerToken = `Bearer ${token}`
 
   // axios.defaults.baseURL = 'https://budgetwise-auth-5cba1d32d7c3.herokuapp.com/api/v1/'

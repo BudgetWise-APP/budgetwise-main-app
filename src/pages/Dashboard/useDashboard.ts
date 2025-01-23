@@ -1,5 +1,5 @@
-import { getAllCryptBudget } from '@/api'
-import { useQuery } from '@tanstack/react-query'
+import { addFavoriteCoin, getAllCryptBudget } from '@/api'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
 export const useDashboard = () => {
@@ -7,6 +7,16 @@ export const useDashboard = () => {
     queryKey: ['cryptoBudget'],
     queryFn: getAllCryptBudget,
   })
+
+    const { mutate } = useMutation({
+      mutationFn: addFavoriteCoin,
+      onSuccess: () => {
+       console.log('Success')
+      },
+      onError: (error) => {
+        console.log('Error', error)
+      }
+    })
 
   const cryptoAmount = useMemo(() => {
     if (!isLoading && data) {
@@ -17,5 +27,6 @@ export const useDashboard = () => {
   return {
     cryptoAmount,
     isLoading,
+    mutate
   }
 }

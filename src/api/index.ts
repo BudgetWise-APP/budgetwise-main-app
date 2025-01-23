@@ -18,36 +18,41 @@ export async function login(data): Promise<string> {
 }
 
 export async function addBudget(data) {
-  await axios.post(`${MICROSERVICES.budgets}/add-budget`, data)
+  await axios.post(`${MICROSERVICES.plannerApi}/budget/create`, data)
 }
 
 export async function getBudgets() {
-  const { data } = await axios.get(`${MICROSERVICES.budgets}/get-budgets`)
+  const { data } = await axios.get(`${MICROSERVICES.plannerApi}/budgets`)
 
-  return data.budget
+  return data.budgets
 }
 
 export async function getBudgetById({ queryKey }) {
   const [, id] = queryKey
-  const { data } = await axios.get(`${MICROSERVICES.budgets}/get-budget/${id}`)
+  const { data } = await axios.get(`${MICROSERVICES.plannerApi}/budgets/${id}`)
 
   return data.budget
 }
 
 export async function editBudget({ id, budgetData }) {
-  const { data } = await axios.put(`${MICROSERVICES.budgets}/edit-budget/${id}`, budgetData)
+  const { data } = await axios.put(`${MICROSERVICES.plannerApi}/budget/update/${id}`, budgetData)
 
   return data.budget
 }
 
 export async function deleteBudget(id) {
-  const { data } = await axios.delete(`${MICROSERVICES.budgets}/delete-budget/${id}`)
+  const { data } = await axios.delete(`${MICROSERVICES.plannerApi}/budget/delete/${id}`)
 
   return data
 }
 
 export async function getCoinmarketcapCoins() {
-  const { data } = await axios.get(`${MICROSERVICES.cryptoApi}/coinmarketcap?symbol=BTC,ETH,XRP`)
+  const { data } = await axios.get(`${MICROSERVICES.cryptoApi}/crypto-api/coinmarketcap?symbol=BTC,ETH,XRP`)
 
   return data
+}
+
+export async function addFavoriteCoin(data) {
+  console.log('data', data)
+  await axios.post(`${MICROSERVICES.cryptoApi}/crypto-api/cryptocurrencies`, data)
 }
