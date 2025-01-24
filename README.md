@@ -1,125 +1,120 @@
 ![Diagram Description](Project-Acrhitecture.drawio.png)
 
-Идея:
-Сервис, который помогает составлять финансовые планы с акцентом на большие цели: покупка автомобиля, яхты, путешествия или инвестиции.
+# Financial Planning Application
 
-Как это будет работать?
-Цели и трекеры:
-
-Пользователь задаёт цель (например, покупка автомобиля за $50,000).
-Приложение рассчитывает, сколько нужно откладывать в месяц, и учитывает доходы/расходы.
-Интеграция с инвестициями:
-
-Предложения, куда инвестировать для ускорения достижения цели.
-Анализ существующего портфеля и рекомендации.
-Образовательная часть:
-
-Советы: как откладывать, как выбрать активы для инвестиций.
-Калькулятор сложного процента для долгосрочных целей.
-Пример использования:
-Вы вводите цель: путешествие на яхте ($10,000).
-Приложение предлагает отложить $500/мес или инвестировать $3,000 в ETF с прогнозируемой доходностью 8% годовых.
-Трекер показывает прогресс, например, "35% цели достигнуто".
-Монетизация:
-Бесплатный план для одной цели.
-Премиум ($5/мес): аналитика, интеграция с инвестициями, расширенные отчёты.
+A service that helps users create financial plans focused on achieving significant goals, such as buying a car, yacht, traveling, or investing.
 
 ---
 
-2. Приложение для планирования финансов и достижения целей
-   Как это будет работать:
-   Создание финансовых целей:
+## Features
 
-Пользователь вводит свою цель (например, покупка автомобиля, яхты, путешествие, накопление на пенсионный счёт).
-Приложение запрашивает сумму цели и дату, к которой нужно её достичь.
-Бюджетирование на месяц:
+### 1. Goals and Trackers
+- Users can set financial goals (e.g., buying a car for $50,000).
+- The app calculates the required monthly savings based on income and expenses.
+- Tracks progress toward goals with visual updates.
 
-Пользователь вводит свои доходы и расходы на месяц.
-Система может предложить несколько популярных методик бюджета:
-50/30/20: 50% на необходимые расходы, 30% на желания, 20% на сбережения и погашение долгов.
-Zero-based budgeting: каждую потраченную единицу денег нужно распределить на заранее запланированные категории.
-Возможность добавить и классифицировать расходы по категориям: жильё, еда, транспорт, развлечения и т.д.
-Автоматические рекомендации:
+### 2. Integration with Cryptocurrency Exchanges
+- Provides investment recommendations to accelerate goal achievement.
+- Analyzes user portfolios and offers personalized suggestions.
 
-Рассчёт: Система анализирует текущие расходы и предлагает рекомендации по сокращению (например, уменьшить расходы на развлечения на 10%).
-Приложение подсчитывает, сколько можно отложить на сбережения, чтобы быстрее достичь цели. Это делается через анализ текущих трат.
-На основе выбранной техники бюджетирования, оно создаёт план с рекомендованной суммой для сбережений.
-Прогресс и изменения:
-
-Отслеживание изменений в планировании: что сэкономлено, какие расходы были уменьшены.
-Графики прогресса, показывающие, насколько быстро пользователь движется к своей цели.
-Как это может работать технически:
-Frontend: React + Recharts для графиков прогресса.
-Backend: Node.js с Express/NestJS для обработки данных.
-База данных: PostgreSQL для хранения данных пользователей, целей, бюджета.
-API для расчетов: Python или JavaScript для выполнения вычислений по бюджету, рекомендаций по сокращению расходов.
-Монетизация:
-Бесплатный план с ограниченным числом целей.
-Платный план с доступом к продвинутым рекомендациям, API-интеграции для подключения банков и автоматической загрузки транзакций (например, через Plaid).
+### 3. Educational Content
+- Offers tips on saving and selecting assets for investments.
+- Includes a compound interest calculator for long-term planning.
 
 ---
 
-Backend
-API для управления пользователями:
-Авторизация (JWT) и управление профилем (регистрация, вход, выход).
-API для хранения данных:
-/api/goals: сюда сохраняются все финансовые цели пользователя.
-/api/transactions: обработка и сохранение всех транзакций (например, доходы, расходы) в PostgreSQL.
-/api/recommendations: где хранятся рекомендованные улучшения бюджета (например, "Сократите расходы на 15% в категории Entertainment").
-API для взаимодействия с инвестициями:
-Возможность анализировать портфель пользователя и предлагать оптимизации.
-Возможность интеграции с такими сервисами, как Plaid или других API финансовых брокеров.
-База данных
-Таблица пользователей (users):
-
-id (UUID) — уникальный идентификатор.
-email (STRING) — email пользователя.
-password_hash (STRING) — хэш пароля.
-created_at (TIMESTAMP) — дата создания.
-
-Таблица целей (goals):
-id (UUID) — уникальный идентификатор.
-user_id (UUID FK) — связь с пользователем.
-goal_name (STRING) — название цели.
-target_amount (INT) — сумма, которую нужно накопить.
-deadline (DATE) — срок достижения цели.
-
-Таблица бюджета (budgets):
-id (UUID) — уникальный идентификатор.
-user_id (UUID FK) — пользователь.
-month (STRING) — месяц и год.
-income (INT) — доход на этот месяц.
-expenses (INT) — расходы.
-recommendations (ARRAY) — рекомендации по улучшению бюджета (например, уменьшение на 10% расходов).
+## Example Use Case
+- **Goal**: Save $10,000 for a yacht trip.
+- **Recommendation**: Save $500/month or invest $3,000 in an ETF with an 8% annual return.
+- **Progress Tracker**: Displays metrics like "35% of your goal achieved."
 
 ---
 
-Интеграция с Binance API предполагает несколько шагов для авторизации и получения данных. Binance предоставляет два способа доступа к своему API:
-
-API-ключи (API Key + Secret Key): Это основной метод доступа для большинства пользователей. Вы генерируете ключи на платформе Binance, добавляете их в ваше приложение, и используете их для подписи запросов.
-
-OAuth2 (пока не поддерживается Binance напрямую): Вы входите через браузер или приложение, и вам выдаётся токен доступа. Binance этого не предоставляет, поэтому остаётся только способ с API-ключами.
-
-Шаги для работы с Binance API
-
-1. Генерация API-ключей на Binance
-   Пользователь должен зайти в свой аккаунт Binance.
-   Перейти в раздел API Management.
-   Создать API-ключи, задав имя и уровни доступа (например, для чтения баланса).
-   Сохранить API Key и Secret Key. Secret Key будет показан только один раз.
-2. Сохранение API-ключей
-   В вашем приложении пользователь вводит или привязывает API-ключи через /integrations/link (описанный ранее контроллер).
-   Ключи сохраняются в базе данных.
-3. Генерация подписи для запросов
-   Binance требует, чтобы некоторые запросы (например, к /api/v3/account) были подписаны с использованием HMAC-SHA256 с использованием вашего Secret Key. Это делается для защиты данных.
-
-4. Отправка подписанных запросов
-   Используйте сохранённые API-ключи и генерируйте подпись для запросов.
+## Monetization
+- **Free Plan**: 
+  - Limited to one goal.
+- **Premium Plan ($5/month)**:
+  - Includes advanced analytics, investment integration, and detailed reports.
 
 ---
 
-{
-"name": "Vasyl Oliinyk",
-"email": "admin@admin.com",
-"pasword": "admin2024"
-}
+## Technical Features
+
+### Goals Management
+- **Goal Creation**:
+  - Users input a goal, target amount, and deadline.
+- **Budgeting**:
+  - Users provide monthly income and expenses.
+  - Supports budgeting methods like:
+    - **50/30/20 Rule**: 50% needs, 30% wants, 20% savings/debt repayment.
+    - **Zero-based Budgeting**: Allocates every dollar to a specific category.
+  - Categorizes expenses (e.g., housing, food, transport).
+
+### Automatic Recommendations
+- Analyzes expenses and suggests optimizations (e.g., "Reduce entertainment by 10%").
+- Suggests saving amounts to meet goals faster.
+- Generates a detailed financial plan.
+
+### Progress Tracking
+- Tracks saved amounts, reduced expenses, and overall progress.
+- Displays graphs and trends to monitor financial changes.
+
+---
+
+## Technical Stack
+- **Frontend**: React + Recharts (for visualizing progress).
+- **Backend API**: Python or JavaScript for budgeting calculations and analytics.
+
+---
+
+## Database Schema
+
+### Table: `goals`
+| Column          | Type   | Description                                      |
+|------------------|--------|--------------------------------------------------|
+| `id`            | UUID   | Unique identifier for the goal.                  |
+| `user_id`       | UUID   | Links the goal to a specific user.               |
+| `goal_name`     | STRING | Name of the financial goal.                      |
+| `target_amount` | INT    | Total amount to be saved.                        |
+| `deadline`      | DATE   | Deadline for achieving the goal.                 |
+
+### Table: `budgets`
+| Column            | Type    | Description                                      |
+|--------------------|---------|--------------------------------------------------|
+| `id`              | UUID    | Unique identifier for the budget.                |
+| `user_id`         | UUID    | Links the budget to a specific user.             |
+| `month`           | STRING  | Month and year of the budget (e.g., Jan 2025).   |
+| `income`          | INT     | User's income for the month.                     |
+| `expenses`        | INT     | User's expenses for the month.                   |
+| `recommendations` | ARRAY   | Suggested budget improvements (e.g., "Reduce expenses by 10%"). |
+
+---
+
+## Monetization
+1. **Free Plan**:
+   - One financial goal.
+   - Basic tracking and budgeting features.
+2. **Premium Plan**:
+   - Advanced recommendations and analysis.
+   - Integration with banks/crypto exchanges.
+   - Automatic transaction imports via APIs (e.g., Plaid).
+
+---
+
+## Setup Instructions
+
+1. **Frontend**:
+   - Install dependencies: `npm install`
+   - Start the app: `npm start`
+
+2. **Backend**:
+   - Set up the Python/Node.js API.
+   - Configure environment variables (e.g., database credentials, API keys).
+
+3. **Database**:
+   - Use the schema definitions to set up the database.
+   - Ensure the `goals` and `budgets` tables are properly indexed for performance.
+
+---
+
+This application empowers users to plan their financial goals efficiently while offering tools to save, invest, and track their progress.

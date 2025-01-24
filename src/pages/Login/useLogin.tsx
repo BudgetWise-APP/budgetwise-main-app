@@ -16,11 +16,12 @@ export const useLogin = () => {
   const { mutate } = useMutation({
     mutationFn: login,
     onSuccess: (token: string) => {
+      console.log('token', token)
       localStorage.setItem('auth_token', token)
       navigate('/')
     },
-    onError: ({ response }: any) => {
-      setError(response.data.message)
+    onError: ({message}) => {
+      setError(message)
     },
   })
 

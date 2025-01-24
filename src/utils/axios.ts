@@ -1,15 +1,17 @@
+import { STATUS_CODES } from '@/constants'
 import axios from 'axios'
 
 export const axiosSetup = () => {
-  const token = localStorage.getItem('auth_token')
-  const bearerToken = `Bearer ${token}`
 
   // axios.defaults.baseURL = 'https://budgetwise-auth-5cba1d32d7c3.herokuapp.com/api/v1/'
   axios.defaults.withCredentials = true
 
   axios.interceptors.request.use(
     (config) => {
-      config.headers.Authorization = bearerToken
+        const token = localStorage.getItem('auth_token')
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
 
       return config
     },
@@ -25,17 +27,13 @@ export const axiosSetup = () => {
     (response) => response,
     (error) => {
       const statusCode = error.response.status
-      console.error('axios response statusCode: ', statusCode)
 
-      //   if (
-      //     statusCode === StatusCodes.CLIENT_ERROR_UNAUTHORIZED ||
-      //     statusCode === StatusCodes.CLIENT_ERROR_FORBIDDEN ||
-      //     !token
-      //   ) {
-      //     navigate(`/${StatusCodes.CLIENT_ERROR_FORBIDDEN}`)
-      //   }
-
-      return Promise.reject(error)
+      if(statusCode === STATUS_CODES.CLIENT_ERROR_FORBIDDEN || statusCode === STATUS_CODES.CLIENT_ERROR_UNAUTHORIZED) {
+        localStorage.removeItem('auth_token')
+        window.location.href = '/login'
+      } else {
+        return Promise.reject(error)
+      }
     },
   )
 }
