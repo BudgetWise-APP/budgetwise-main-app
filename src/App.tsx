@@ -4,6 +4,7 @@ import PageWrapper from './components/PageWrapper'
 import Sidebar from './components/Sidebar'
 import { axiosSetup } from './utils/axios'
 import routes from './utils/routes'
+import { ModalProvider } from './context/ModalProvider'
 
 function App() {
   axiosSetup()
@@ -11,24 +12,26 @@ function App() {
   const isLoginPage = location.pathname === '/login'
 
   return (
-    <div className="bg-[#f7f9fc] min-h-full color-[#6f7182]">
-      {!isLoginPage && <Sidebar />}
-      <Routes>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              isLoginPage ? (
-                route.element
-              ) : (
-                <PageWrapper>{route.element}</PageWrapper>
-              )
-            }
-          />
-        ))}
-      </Routes>
-    </div>
+    <ModalProvider>
+      <div className="bg-[#f7f9fc] min-h-full color-[#6f7182]">
+        {!isLoginPage && <Sidebar />}
+        <Routes>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                isLoginPage ? (
+                  route.element
+                ) : (
+                  <PageWrapper>{route.element}</PageWrapper>
+                )
+              }
+            />
+          ))}
+        </Routes>
+      </div>
+    </ModalProvider>
   )
 }
 

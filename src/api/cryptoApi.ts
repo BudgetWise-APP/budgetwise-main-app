@@ -25,19 +25,41 @@ export async function getByBitAccount(): Promise<number | undefined> {
   }
 }
 
-export async function getCoinmarketcapCoins(): Promise<CryptoCoinType[]> {
+export async function getCoinmarketcapCoins({
+  queryKey,
+}: any): Promise<CryptoCoinType[]> {
+  console.log('queryKey', queryKey)
+  const [, symbols] = queryKey
   const { data } = await axios.get(
-    `${MICROSERVICES.cryptoApi}/crypto-api/coinmarketcap?symbol=BTC,ETH,XRP`,
+    `${MICROSERVICES.cryptoApi}/crypto-api/coinmarketcap${symbols ? `?symbol=${symbols}` : ''}`,
   )
 
   return data
 }
 
 export async function addFavoriteCoin(data: CryptoCoinType): Promise<any> {
-  await axios.post(
+  return await axios.post(
     `${MICROSERVICES.cryptoApi}/crypto-api/cryptocurrencies`,
     data,
   )
+}
+
+export async function getFavoriteCoins(): Promise<CryptoCoinType[] | []> {
+  const { data } = await axios.get(
+    `${MICROSERVICES.cryptoApi}/crypto-api/cryptocurrencies`,
+  )
+
+  return data
+}
+
+export async function deleteFavotiteCoin(
+  id: string,
+): Promise<CryptoCoinType[] | []> {
+  const { data } = await axios.delete(
+    `${MICROSERVICES.cryptoApi}/crypto-api/cryptocurrencies/${id}`,
+  )
+
+  return data
 }
 
 export async function getIntegrations(): Promise<IntegrationType[]> {
