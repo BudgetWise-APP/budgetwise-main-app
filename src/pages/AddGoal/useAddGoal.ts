@@ -77,6 +77,5 @@ export const useAddGoal = () => {
     trackBy,
     errors,
     requestError,
-    setFavoriteMutation,
   }
 }
