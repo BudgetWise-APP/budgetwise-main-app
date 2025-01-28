@@ -1,11 +1,12 @@
 import ProtectedRoute from '@/components/ProtectedRoute'
 import AddBudget from '@/pages/AddBudget'
+import AddGoal from '@/pages/AddGoal'
 import { Budget } from '@/pages/Budget'
 import CoinsTracker from '@/pages/CoinsTracker'
 import Dashboard from '@/pages/Dashboard'
 import EditBudget from '@/pages/EditBudget'
 import Error404 from '@/pages/Error404'
-import GoalTracker from '@/pages/GoalTracker'
+import GoalsTracker from '@/pages/GoalsTracker'
 import Login from '@/pages/Login'
 import Reports from '@/pages/Reports'
 import Settings from '@/pages/Settings'
@@ -34,10 +35,18 @@ const routes: RouteConfig[] = [
     ),
   },
   {
-    path: '/goal-tracker',
+    path: '/goals-tracker',
     element: (
       <ProtectedRoute>
-        <GoalTracker />
+        <GoalsTracker />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/add-goal',
+    element: (
+      <ProtectedRoute>
+        <AddGoal />
       </ProtectedRoute>
     ),
   },

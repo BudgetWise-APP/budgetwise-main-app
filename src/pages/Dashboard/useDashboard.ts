@@ -5,6 +5,7 @@ import {
   getBinanceAccount,
   getByBitAccount,
 } from '@/api/cryptoApi'
+import { getFavoriteGoal } from '@/api/plannerApi'
 
 export const useDashboard = () => {
   const { data: binanceMoney, isLoading: isBinanceLoading } = useQuery({
@@ -17,6 +18,11 @@ export const useDashboard = () => {
     queryFn: getByBitAccount,
   })
 
+  const { data: favoriteGoal, isLoading: isFavoriteGoalLoading } = useQuery({
+    queryKey: ['getFavoriteGoal'],
+    queryFn: getFavoriteGoal,
+  })
+
   const { mutate } = useMutation({
     mutationFn: addFavoriteCoin,
   })
@@ -27,5 +33,7 @@ export const useDashboard = () => {
     mutate,
     isBinanceLoading,
     isBybitLoading,
+    favoriteGoal,
+    isFavoriteGoalLoading,
   }
 }

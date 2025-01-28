@@ -3,10 +3,17 @@ import { CurrencyDollarIcon } from '@heroicons/react/24/outline'
 import { useDashboard } from './useDashboard'
 import Box from '@/components/Box'
 import PageTitle from '@/components/PageTitle'
+import ProgressBar from '@/components/ProgressBar'
 
 const Dashboard = () => {
-  const { binanceMoney, bybitMoney, isBinanceLoading, isBybitLoading } =
-    useDashboard()
+  const {
+    binanceMoney,
+    bybitMoney,
+    isBinanceLoading,
+    isBybitLoading,
+    favoriteGoal,
+    isFavoriteGoalLoading,
+  } = useDashboard()
 
   return (
     <div>
@@ -34,8 +41,19 @@ const Dashboard = () => {
             </div>
           </div>
         </Box>
-        <Box>In development...</Box>
-        <Box>In development...</Box>
+        <Box isLoading={isFavoriteGoalLoading}>
+          <div className="flex items-center w-full">
+            <div className="flex flex-col">
+              <div className="text-sm font-semibold text-gray-600">
+                {favoriteGoal?.title}
+              </div>
+              <ProgressBar
+                initialValue={favoriteGoal?.currentStatus}
+                finalValue={favoriteGoal?.goal}
+              />
+            </div>
+          </div>
+        </Box>
       </div>
     </div>
   )

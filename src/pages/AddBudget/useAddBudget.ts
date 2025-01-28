@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { BUDGET_SECTIONS, CURRENCIES, defaultBudgetFormData } from './constants'
 import { AddBudgetSchema, BudgetSchemaType } from './helpers'
-import { addBudget } from '@/api'
+import { addBudget } from '@/api/plannerApi'
 
 export const useAddBudget = () => {
   const navigate = useNavigate()
@@ -29,6 +29,7 @@ export const useAddBudget = () => {
   })
 
   function onSubmit(data: BudgetSchemaType) {
+    console.log('data', data)
     mutate(data)
   }
 

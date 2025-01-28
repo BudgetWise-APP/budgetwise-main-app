@@ -10,7 +10,7 @@ import {
   defaultBudgetFormData,
 } from '../AddBudget/constants'
 import { AddBudgetSchema, BudgetSchemaType } from '../AddBudget/helpers'
-import { editBudget, getBudgetById } from '@/api'
+import { editBudget, getBudgetById } from '@/api/plannerApi'
 
 export const useEditBudget = () => {
   const navigate = useNavigate()

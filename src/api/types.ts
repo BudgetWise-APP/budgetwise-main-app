@@ -36,3 +36,12 @@ export type BudgetType = DashID &
 export type EditBudgetType = ID & {
   budgetData: BudgetSchemaType
 }
+
+export type GoalType = DashID & Title & {
+  description?: string
+  goal: number
+  currentStatus: number
+  isFavorite: boolean
+  done: boolean
+  trackBy: string
+}

@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import BudgetStatus from './BudgetStatus'
 import { useBudgetStatistics } from './useBudgetStatistics'
 import { CURRENCIES, currenciesSymbols } from '@/pages/AddBudget/constants'
 import { BudgetSchemaType } from '@/pages/AddBudget/helpers'
 
-const BudgetStatistics = ({ formData }: { formData: BudgetSchemaType }) => {
-  const { income, currency, budgetType, items } = formData
+const BudgetStatistics = memo(({ formData}: { formData: BudgetSchemaType }) => {
+  const { budgetType, income, items, currency } = formData
   const {
     needsExpenses,
     wantsExpenses,
@@ -66,6 +67,6 @@ const BudgetStatistics = ({ formData }: { formData: BudgetSchemaType }) => {
       {/* TODO add here budget health */}
     </div>
   )
-}
+})
 
 export default BudgetStatistics

@@ -34,14 +34,14 @@ const AddBudget = () => {
               control={control}
               name="title"
               render={({ field }) => (
-                <Input type="text" placeholder="Title" {...field} />
+                <Input {...field} type="text" placeholder="Title"  />
               )}
             />
             <Controller
               control={control}
               name="income"
               render={({ field }) => (
-                <Input type="text" placeholder="Income" {...field} />
+                <Input {...field} type="text" placeholder="Income"  />
               )}
             />
             <div className="grid gap-3 grid-rows-[auto] grid-cols-12 items-center">
@@ -50,9 +50,10 @@ const AddBudget = () => {
                 name="budgetType"
                 render={({ field }) => (
                   <Select
+                    {...field}
                     options={budgetOptions}
                     className={'col-span-10'}
-                    {...field}
+                    
                   />
                 )}
               />
@@ -61,9 +62,10 @@ const AddBudget = () => {
                 name="currency"
                 render={({ field }) => (
                   <Select
+                  {...field}
                     options={currenciesOptions}
                     className={'col-span-2'}
-                    {...field}
+
                   />
                 )}
               />

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { BUDGET_SECTIONS } from '../AddBudget/constants'
-import { deleteBudget, getBudgets } from '@/api'
+import { deleteBudget, getBudgets } from '@/api/plannerApi'
 import { BudgetType } from '@/api/types'
 
 export const useBudgetPage = () => {

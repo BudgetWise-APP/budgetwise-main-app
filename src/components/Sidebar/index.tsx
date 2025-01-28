@@ -44,10 +44,10 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="w-100 text-base">
-            <Link to="/goal-tracker">
+            <Link to="/goals-tracker">
               <div className="p-3 mb-4 w-full flex align-middle hover:text-blue-500 transition">
                 <RocketLaunchIcon width={20} className="mr-2" />
-                Goal tracker
+                Goals tracker
               </div>
             </Link>
           </li>
